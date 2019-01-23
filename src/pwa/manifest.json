@@ -1,0 +1,22 @@
+{
+  "short_name": "Platformer PWA",
+  "name": "Phaser 3 Platformer Example",
+  "icons": [
+    {
+      "src": "./assets/icons/icons-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./assets/icons/icons-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#e6e6e6",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "scope": "./",
+  "theme_color": "#000000"
+}

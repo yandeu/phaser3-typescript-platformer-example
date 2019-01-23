@@ -1,6 +1,7 @@
 const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { InjectManifest } = require('workbox-webpack-plugin')
 
 module.exports = {
   entry: './src/game.ts',
@@ -28,6 +29,9 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: 'src/index.html' }),
-    new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }])
+    new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }, { from: 'src/pwa', to: '' }]),
+    new InjectManifest({
+      swSrc: path.resolve(__dirname, '../src/pwa/sw.js')
+    })
   ]
 }
