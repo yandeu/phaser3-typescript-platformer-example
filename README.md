@@ -6,4 +6,4 @@ Built with the [**phaser3-typescript-webpack**](https://github.com/yandeu/phaser
 
 [Play the game](https://s3.eu-central-1.amazonaws.com/phaser3-typescript/platformer-example/index.html)
 
-![Screenshot](screenshots/nexus6-640x360.png)
+[![phaser3-typescript-platformer](screenshots/nexus6-640x360.png)](https://s3.eu-central-1.amazonaws.com/phaser3-typescript/platformer-example/index.html)
