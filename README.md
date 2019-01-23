@@ -1,6 +1,6 @@
 # Phaser 3 TypeScript Platformer Example
 
-Built with the [**phaser3-typescript-webpack**](https://github.com/yandeu/phaser3-typescript-webpack#readme) starter.
+Built with the [**phaser3-typescript-webpack**](https://github.com/yandeu/https://github.com/yandeu/phaser-project-template#readme) starter.
 
 ## Play
 
