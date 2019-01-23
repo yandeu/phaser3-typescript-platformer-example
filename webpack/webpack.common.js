@@ -29,7 +29,11 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({ template: 'src/index.html' }),
-    new CopyWebpackPlugin([{ from: 'src/assets', to: 'assets' }, { from: 'src/pwa', to: '' }]),
+    new CopyWebpackPlugin([
+      { from: 'src/assets', to: 'assets' },
+      { from: 'src/pwa', to: '' },
+      { from: 'src/favicon.ico', to: '' }
+    ]),
     new InjectManifest({
       swSrc: path.resolve(__dirname, '../src/pwa/sw.js')
     })
