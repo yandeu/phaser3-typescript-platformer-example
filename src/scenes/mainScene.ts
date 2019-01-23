@@ -66,7 +66,10 @@ export default class MainScene extends Phaser.Scene {
     //@ts-ignore
     this.physics.add.overlap(this.player, coinGroup, (player, coin) => coin.collect())
     //@ts-ignore
-    this.physics.add.overlap(this.player, this.goal, (player, goal: GoalSprite) => goal.nextLevel(this, this.level))
+    this.physics.add.overlap(this.player, this.goal, (player: Player, goal: GoalSprite) => {
+      player.halt()
+      goal.nextLevel(this, this.level)
+    })
 
     //  minimap
     this.miniMap = this.cameras
@@ -94,12 +97,6 @@ export default class MainScene extends Phaser.Scene {
     // update miniMap
     this.miniMap.scrollX = this.player.x
     this.miniMap.scrollY = this.player.y
-
-    if (this.goal.loadNextLevel) {
-      // @ts-ignore
-      this.player.halt()
-      return
-    }
 
     // if player dies
     this.player.update(this.cursors, this.controls)
