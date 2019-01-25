@@ -2,8 +2,9 @@ import 'phaser'
 import MainScene from './scenes/mainScene'
 import PreloadScene from './scenes/preloadScene'
 
-const DEFAULT_WIDTH = 1152
-const DEFAULT_HEIGHT = 648
+const ratio = Math.max(window.innerWidth / window.innerHeight, window.innerHeight / window.innerWidth)
+const DEFAULT_HEIGHT = 720
+const DEFAULT_WIDTH = ratio * DEFAULT_HEIGHT //1280
 
 const config: GameConfig = {
   width: DEFAULT_WIDTH,
