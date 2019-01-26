@@ -90,7 +90,7 @@ export default class MainScene extends Phaser.Scene {
 
   update() {
     // parallax background
-    this.background.update(this.player)
+    this.background.parallax(this.player)
 
     this.enemiesGroup.update()
 
