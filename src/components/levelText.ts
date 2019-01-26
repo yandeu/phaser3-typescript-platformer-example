@@ -14,11 +14,14 @@ export default class LevelText extends Phaser.GameObjects.Text {
       .startTween()
   }
 
-  private tweensAsync = (config: object) => {
+  private tweensAsync = (config: { [key: string]: any }): Promise<{}> => {
     return new Promise(resolve => {
       this.scene.tweens.add({
         ...config,
-        onComplete: () => resolve()
+        onComplete: () => {
+          if (config.onComplete) config.onComplete()
+          resolve()
+        }
       })
     })
   }
@@ -30,7 +33,8 @@ export default class LevelText extends Phaser.GameObjects.Text {
       scaleY: 1.5,
       yoyo: true,
       delay: 500,
-      duration: 200
+      duration: 200,
+      onComplete: () => console.log('tween 1 completed')
     })
     await this.tweensAsync({
       targets: this,
@@ -39,7 +43,8 @@ export default class LevelText extends Phaser.GameObjects.Text {
       scaleY: 0.5,
       ease: 'Sine.easeInOut',
       delay: 500,
-      duration: 400
+      duration: 400,
+      onComplete: () => console.log('tween 2 completed')
     })
     this.setFontSize(28)
     this.setScale(1)
@@ -47,7 +52,8 @@ export default class LevelText extends Phaser.GameObjects.Text {
       targets: this,
       alpha: 0,
       delay: 2000,
-      duration: 400
+      duration: 400,
+      onComplete: () => console.log('tween 3 completed')
     })
     this.destroy()
   }
