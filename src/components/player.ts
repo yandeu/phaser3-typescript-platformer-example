@@ -40,7 +40,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   killEnemy() {
-    this.setVelocityY(-400)
+    this.setVelocityY(-600)
   }
 
   halt() {
