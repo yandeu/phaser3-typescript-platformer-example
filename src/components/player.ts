@@ -57,15 +57,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       this.kill()
 
     // controls left & right
-    if (cursors.left.isDown || controls.left.pressed) {
+    if (cursors.left.isDown || controls.leftIsDown) {
       this.setVelocityX(-500)
       this.setFlipX(true)
-    } else if (cursors.right.isDown || controls.right.pressed) {
+    } else if (cursors.right.isDown || controls.rightIsDown) {
       this.setVelocityX(550)
       this.setFlipX(false)
     }
     // controls up
-    if ((cursors.up.isDown || cursors.space.isDown || controls.up.pressed) && this.body.blocked.down) {
+    if ((cursors.up.isDown || cursors.space.isDown || controls.upIsDown) && this.body.blocked.down) {
       this.setVelocityY(-1250)
     }
   }

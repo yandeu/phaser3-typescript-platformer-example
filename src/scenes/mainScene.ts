@@ -37,7 +37,7 @@ export default class MainScene extends Phaser.Scene {
     this.cameras.main.setBounds(map.size.x, map.size.y, map.size.width, map.size.height)
     this.physics.world.setBounds(map.size.x, map.size.y, map.size.width, map.size.height)
 
-    this.input.addPointer(2)
+    this.input.addPointer(1)
     this.cursors = this.input.keyboard.createCursorKeys()
 
     this.background = new Background(this)
@@ -80,9 +80,9 @@ export default class MainScene extends Phaser.Scene {
       .setBackgroundColor(0x81bdd2ff)
       .ignore(this.background)
       .ignore(levelText)
-      .ignore(this.controls.left)
-      .ignore(this.controls.right)
-      .ignore(this.controls.up)
+      .ignore(this.controls.buttons[0])
+      .ignore(this.controls.buttons[1])
+      .ignore(this.controls.buttons[2])
       .setAlpha(0.75)
     this.miniMap.scrollX = this.player.x
     this.miniMap.scrollY = this.player.y
@@ -91,6 +91,9 @@ export default class MainScene extends Phaser.Scene {
   update() {
     // parallax background
     this.background.parallax(this.player)
+
+    // the the pointers
+    this.controls.update()
 
     this.enemiesGroup.update()
 
