@@ -36,6 +36,7 @@ export default class LevelText extends Phaser.GameObjects.Text {
       duration: 200,
       onComplete: () => console.log('tween 1 completed')
     })
+
     await this.tweensAsync({
       targets: this,
       y: 10,
@@ -46,8 +47,10 @@ export default class LevelText extends Phaser.GameObjects.Text {
       duration: 400,
       onComplete: () => console.log('tween 2 completed')
     })
+
     this.setFontSize(28)
     this.setScale(1)
+
     await this.tweensAsync({
       targets: this,
       alpha: 0,
@@ -55,6 +58,7 @@ export default class LevelText extends Phaser.GameObjects.Text {
       duration: 400,
       onComplete: () => console.log('tween 3 completed')
     })
+
     this.destroy()
   }
 }
