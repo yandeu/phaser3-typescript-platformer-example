@@ -22,7 +22,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.play('walk')
 
     this.setOrigin(0, 1)
-    this.setDragX(750)
+    this.setDragX(1500)
     // @ts-ignore
     this.body.setSize(70, 132)
     this.body.setOffset(25, 24)
