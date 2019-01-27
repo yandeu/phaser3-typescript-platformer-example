@@ -25,7 +25,7 @@ export default class Controls {
       },
       {
         type: 'right',
-        x: 308,
+        x: 328,
         y,
         rotation: 0.5 * Math.PI
       },
