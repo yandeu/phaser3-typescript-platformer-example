@@ -8,5 +8,8 @@ export default class ControlsSprite extends Phaser.GameObjects.Image {
       .setAlpha(0.25)
       .setRotation(config.rotation)
       .setScrollFactor(0)
+
+    // hide control on non-touch devices
+    if (!scene.sys.game.device.input.touch) this.setAlpha(0)
   }
 }
