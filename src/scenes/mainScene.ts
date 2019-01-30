@@ -86,6 +86,15 @@ export default class MainScene extends Phaser.Scene {
       .setAlpha(0.75)
     this.miniMap.scrollX = this.player.x
     this.miniMap.scrollY = this.player.y
+
+    // display the Phaser.VERSION
+    this.add
+      .text(this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`, {
+        color: '#000000',
+        fontSize: 24
+      })
+      .setOrigin(1, 0)
+      .setScrollFactor(0)
   }
 
   update() {
