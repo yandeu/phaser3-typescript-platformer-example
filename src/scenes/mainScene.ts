@@ -80,9 +80,9 @@ export default class MainScene extends Phaser.Scene {
       .setBackgroundColor(0x81bdd2ff)
       .ignore(this.background)
       .ignore(levelText)
-      .ignore(this.controls.buttons[0])
-      .ignore(this.controls.buttons[1])
-      .ignore(this.controls.buttons[2])
+      .ignore(this.controls.buttons.up)
+      .ignore(this.controls.buttons.left)
+      .ignore(this.controls.buttons.right)
       .setAlpha(0.75)
     this.miniMap.scrollX = this.player.x
     this.miniMap.scrollY = this.player.y

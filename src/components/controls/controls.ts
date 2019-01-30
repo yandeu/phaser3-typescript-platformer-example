@@ -4,7 +4,7 @@ export default class Controls {
   leftIsDown: boolean
   rightIsDown: boolean
   upIsDown: boolean
-  buttons: ControlsSprite[] = []
+  buttons: { [key: string]: ControlsSprite } = {}
 
   private _width = 192
   private _height = 192
@@ -36,8 +36,9 @@ export default class Controls {
         rotation: 0
       }
     ]
-
-    this._config.map(el => new ControlsSprite(scene, el.x, el.y, el)).forEach(button => this.buttons.push(button))
+    this._config.forEach(el => {
+      this.buttons[el.type] = new ControlsSprite(scene, el.x, el.y, el)
+    })
   }
 
   update() {
