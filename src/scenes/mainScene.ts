@@ -71,6 +71,15 @@ export default class MainScene extends Phaser.Scene {
       goal.nextLevel(this, this.level)
     })
 
+    // display the Phaser.VERSION
+    let phaserVersion = this.add
+      .text(this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`, {
+        color: '#000000',
+        fontSize: 24
+      })
+      .setOrigin(1, 0)
+      .setScrollFactor(0)
+
     //  minimap
     this.miniMap = this.cameras
       .add(10, 10, Math.min(map.size.width / 8, (map.size.height / 8) * 2.5), map.size.height / 8)
@@ -83,18 +92,10 @@ export default class MainScene extends Phaser.Scene {
       .ignore(this.controls.buttons.up)
       .ignore(this.controls.buttons.left)
       .ignore(this.controls.buttons.right)
+      .ignore(phaserVersion)
       .setAlpha(0.75)
     this.miniMap.scrollX = this.player.x
     this.miniMap.scrollY = this.player.y
-
-    // display the Phaser.VERSION
-    this.add
-      .text(this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`, {
-        color: '#000000',
-        fontSize: 24
-      })
-      .setOrigin(1, 0)
-      .setScrollFactor(0)
   }
 
   update() {
