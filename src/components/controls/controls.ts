@@ -14,24 +14,24 @@ export default class Controls {
   constructor(scene: Phaser.Scene) {
     this._scene = scene
 
-    const y = scene.cameras.main.height - 106
+    const y = scene.cameras.main.height - 130
 
     this._config = [
       {
         type: 'left',
-        x: 106,
+        x: 130,
         y,
         rotation: 1.5 * Math.PI
       },
       {
         type: 'right',
-        x: 328,
+        x: 376,
         y,
         rotation: 0.5 * Math.PI
       },
       {
         type: 'up',
-        x: scene.cameras.main.width - 106,
+        x: scene.cameras.main.width - 130,
         y,
         rotation: 0
       }
