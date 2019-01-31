@@ -1,5 +1,6 @@
 import BeeSprite from './bee'
 import SlimeSprite from './slime'
+import EnemyClass from './enemyClass'
 
 export default class EnemiesGroup extends Phaser.GameObjects.Group {
   tiles: TilesConfig[]
@@ -26,7 +27,8 @@ export default class EnemiesGroup extends Phaser.GameObjects.Group {
 
   update() {
     // check if the enemy should change its direction
-    this.children.iterate(enemy => {
+    // @ts-ignore
+    this.children.iterate((enemy: BeeSprite | SlimeSprite) => {
       if (enemy.dead) return
 
       let enemyIsMovingRight = enemy.body.velocity.x >= 0

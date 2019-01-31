@@ -1,6 +1,6 @@
 import { Map } from '../components/map'
 import TilesGroup from '../components/tiles/tilesGroup'
-import Player from '../components/player'
+import Player from '../components/player/player'
 import CoinGroup from '../components/coins/coinGroup'
 import BeeSprite from '../components/enemies/bee'
 import EnemiesGroup from '../components/enemies/enemiesGroup'
@@ -20,7 +20,14 @@ export default class MainScene extends Phaser.Scene {
   level: number
   miniMap: Phaser.Cameras.Scene2D.BaseCamera
   constructor() {
-    super({ key: 'MainScene' })
+    // @ts-ignore
+    super({
+      key: 'MainScene',
+      //plugins: ['SpineWebGLPlugin']
+      pack: {
+        files: [{ type: 'scenePlugin', key: 'SpineWebGLPlugin', url: 'plugins/SpineWebGLPlugin.js', sceneKey: 'spine' }]
+      }
+    })
   }
 
   init(props: { level?: number }) {
@@ -43,7 +50,7 @@ export default class MainScene extends Phaser.Scene {
     this.background = new Background(this)
     this.tilesGroup = new TilesGroup(this, map.info.filter((el: TilesConfig) => el.type === 'tile'))
     this.goal = new GoalSprite(this, map.info.filter((el: TilesConfig) => el.type === 'goal')[0])
-    this.player = new Player(this, map.info.filter((el: TilesConfig) => el.type === 'player')[0], map.size)
+    this.player = new Player(this, map.info.filter((el: TilesConfig) => el.type === 'player')[0], map.size, this.level)
     this.enemiesGroup = new EnemiesGroup(this, map.info)
     const coinGroup = new CoinGroup(this, map.info.filter((el: TilesConfig) => el.type === 'coin'))
     this.controls = new Controls(this)

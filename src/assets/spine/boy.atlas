@@ -1,0 +1,104 @@
+
+boy.png
+size: 512,128
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blue/images/Body
+  rotate: false
+  xy: 99, 2
+  size: 95, 124
+  orig: 95, 124
+  offset: 0, 0
+  index: -1
+blue/images/LeftArm
+  rotate: false
+  xy: 414, 102
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+blue/images/Leftleg
+  rotate: true
+  xy: 331, 101
+  size: 25, 28
+  orig: 25, 28
+  offset: 0, 0
+  index: -1
+blue/images/RightArm
+  rotate: false
+  xy: 361, 102
+  size: 25, 24
+  orig: 25, 24
+  offset: 0, 0
+  index: -1
+blue/images/RightLeg
+  rotate: false
+  xy: 196, 43
+  size: 28, 31
+  orig: 28, 31
+  offset: 0, 0
+  index: -1
+blue/images/face1
+  rotate: true
+  xy: 196, 12
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+blue/images/face2
+  rotate: false
+  xy: 300, 100
+  size: 29, 26
+  orig: 29, 26
+  offset: 0, 0
+  index: -1
+green/images/Body
+  rotate: false
+  xy: 2, 2
+  size: 95, 124
+  orig: 95, 124
+  offset: 0, 0
+  index: -1
+green/images/LeftArm
+  rotate: false
+  xy: 388, 102
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+green/images/Leftleg
+  rotate: false
+  xy: 270, 97
+  size: 28, 29
+  orig: 28, 29
+  offset: 0, 0
+  index: -1
+green/images/RightArm
+  rotate: false
+  xy: 440, 102
+  size: 24, 24
+  orig: 24, 24
+  offset: 0, 0
+  index: -1
+green/images/RightLeg
+  rotate: false
+  xy: 238, 96
+  size: 30, 30
+  orig: 30, 30
+  offset: 0, 0
+  index: -1
+green/images/face1
+  rotate: false
+  xy: 196, 101
+  size: 40, 25
+  orig: 40, 25
+  offset: 0, 0
+  index: -1
+green/images/face2
+  rotate: false
+  xy: 196, 76
+  size: 40, 23
+  orig: 40, 23
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,110 @@
+{
+    "bones": [
+        {
+            "name": "root"
+        }
+    ],
+    "slots": [
+        {
+            "name": "LeftArm",
+            "bone": "root",
+            "attachment": "LeftArm"
+        },
+        {
+            "name": "RightArm",
+            "bone": "root",
+            "attachment": "RightArm"
+        },
+        {
+            "name": "Leftleg",
+            "bone": "root",
+            "attachment": "Leftleg"
+        },
+        {
+            "name": "RightLeg",
+            "bone": "root",
+            "attachment": "RightLeg"
+        },
+        {
+            "name": "Body",
+            "bone": "root",
+            "attachment": "Body"
+        },
+        {
+            "name": "face1",
+            "bone": "root",
+            "attachment": "face1"
+        },
+        {
+            "name": "face2",
+            "bone": "root",
+            "attachment": "face2"
+        }
+    ],
+    "animations": {
+        "animation": {}
+    },
+    "skeleton": {
+        "images": "/home/yannick/Desktop/phaser3-typescript-platformer-example/src/assets/spine/raw/boy/images"
+    },
+    "skins": {
+        "default": {
+            "Body": {
+                "Body": {
+                    "y": 6.02301030000001,
+                    "x": 1.2767983000000047,
+                    "height": 123.76136,
+                    "width": 94.820693
+                }
+            },
+            "RightArm": {
+                "RightArm": {
+                    "y": -25.683121,
+                    "x": 34.71175100000001,
+                    "height": 24.43687,
+                    "width": 24.396829
+                }
+            },
+            "face2": {
+                "face2": {
+                    "y": 1.0744315000000029,
+                    "x": 8.584681500000006,
+                    "height": 22.840469,
+                    "width": 40.211536
+                }
+            },
+            "LeftArm": {
+                "LeftArm": {
+                    "y": -25.683121,
+                    "x": -36.67465433088239,
+                    "height": 24.43687,
+                    "width": 24.024965
+                }
+            },
+            "RightLeg": {
+                "RightLeg": {
+                    "y": -56.12224700000001,
+                    "x": 21.352553,
+                    "height": 30.425424,
+                    "width": 29.802297
+                }
+            },
+            "face1": {
+                "face1": {
+                    "y": -0.23050349999999753,
+                    "x": 8.584681500000006,
+                    "height": 25.450339,
+                    "width": 40.211536
+                }
+            },
+            "Leftleg": {
+                "Leftleg": {
+                    "y": -57.676764999999996,
+                    "x": -16.624955,
+                    "height": 28.8391,
+                    "width": 27.687299
+                }
+            }
+        }
+    }
+}

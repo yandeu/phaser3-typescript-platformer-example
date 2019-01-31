@@ -1,11 +1,13 @@
-import Controls from '../components/controls/controls'
+import Controls from '../controls/controls'
+import PlayerSpine from './playerSpine'
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   private _dead: boolean = false
   private _halt: boolean = false
   private mapSize: MapSize
+  playerSpine: PlayerSpine
 
-  constructor(scene: Phaser.Scene, player: TilesConfig, mapSize: MapSize) {
+  constructor(scene: Phaser.Scene, player: TilesConfig, mapSize: MapSize, level: number) {
     super(scene, player.x, player.y, player.texture)
     scene.add.existing(this)
     scene.physics.add.existing(this)
@@ -13,19 +15,25 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.scene = scene
     this.mapSize = mapSize
 
-    scene.anims.create({
-      key: 'walk',
-      frames: scene.anims.generateFrameNames('player'),
-      frameRate: 8,
-      repeat: -1
-    })
-    this.play('walk')
+    // scene.anims.create({
+    //   key: 'walk',
+    //   frames: scene.anims.generateFrameNames('player'),
+    //   frameRate: 8,
+    //   repeat: -1
+    // })
+    // this.play('walk')
+
+    this.setVisible(false)
 
     this.setOrigin(0, 1)
     this.setDragX(1500)
     // @ts-ignore
     this.body.setSize(70, 132)
     this.body.setOffset(25, 24)
+
+    let theSkin = level % 2 == 0 ? 'blue' : 'green'
+    this.playerSpine = new PlayerSpine(scene, this.body.center.x, this.body.bottom)
+    this.playerSpine.setSkin(theSkin)
   }
 
   kill() {
@@ -40,6 +48,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   killEnemy() {
+    this.playerSpine.spine.customParams.isKilling = true
     this.setVelocityY(-600)
   }
 
@@ -51,6 +60,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
   update(cursors: any, controls: Controls) {
     if (this._halt || this._dead) return
+
+    // update spine animation
+    this.playerSpine.move(this)
 
     // check if out of camera and kill
     if (this.body.right < this.mapSize.x || this.body.left > this.mapSize.width || this.body.top > this.mapSize.height)

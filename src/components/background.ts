@@ -1,4 +1,4 @@
-import Player from './player'
+import Player from './player/player'
 
 export default class Background extends Phaser.GameObjects.TileSprite {
   constructor(scene: Phaser.Scene) {
