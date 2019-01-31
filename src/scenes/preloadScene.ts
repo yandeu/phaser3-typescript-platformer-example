@@ -2,10 +2,7 @@ export default class PreloadScene extends Phaser.Scene {
   constructor() {
     // @ts-ignore
     super({
-      key: 'PreloadScene',
-      pack: {
-        files: [{ type: 'scenePlugin', key: 'SpineWebGLPlugin', url: 'plugins/SpineWebGLPlugin.js', sceneKey: 'spine' }]
-      }
+      key: 'PreloadScene'
     })
   }
 

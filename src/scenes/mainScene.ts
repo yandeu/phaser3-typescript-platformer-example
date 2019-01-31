@@ -22,11 +22,7 @@ export default class MainScene extends Phaser.Scene {
   constructor() {
     // @ts-ignore
     super({
-      key: 'MainScene',
-      //plugins: ['SpineWebGLPlugin']
-      pack: {
-        files: [{ type: 'scenePlugin', key: 'SpineWebGLPlugin', url: 'plugins/SpineWebGLPlugin.js', sceneKey: 'spine' }]
-      }
+      key: 'MainScene'
     })
   }
 

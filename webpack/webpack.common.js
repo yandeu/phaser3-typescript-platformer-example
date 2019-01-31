@@ -19,7 +19,7 @@ module.exports = {
     splitChunks: {
       cacheGroups: {
         commons: {
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/]|[\\/]src[\\/]plugins[\\/]/,
           name: 'vendors',
           chunks: 'all',
           filename: '[name].bundle.js'
@@ -31,7 +31,6 @@ module.exports = {
     new HtmlWebpackPlugin({ template: 'src/index.html' }),
     new CopyWebpackPlugin([
       { from: 'src/assets', to: 'assets' },
-      { from: 'src/plugins', to: 'plugins' },
       { from: 'src/pwa', to: '' },
       { from: 'src/favicon.ico', to: '' }
     ]),
