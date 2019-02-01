@@ -8,6 +8,7 @@ import GoalSprite from '../components/goalSprite'
 import Controls from '../components/controls/controls'
 import LevelText from '../components/levelText'
 import Background from '../components/background'
+import MiniMap from '../components/miniMap'
 
 export default class MainScene extends Phaser.Scene {
   player: Player
@@ -18,7 +19,7 @@ export default class MainScene extends Phaser.Scene {
   controls: Controls
   goal: GoalSprite
   level: number
-  miniMap: Phaser.Cameras.Scene2D.BaseCamera
+  miniMap: MiniMap
   constructor() {
     // @ts-ignore
     super({
@@ -83,38 +84,30 @@ export default class MainScene extends Phaser.Scene {
       .setOrigin(1, 0)
       .setScrollFactor(0)
 
-    //  minimap
-    this.miniMap = this.cameras
-      .add(10, 10, Math.min(map.size.width / 8, (map.size.height / 8) * 2.5), map.size.height / 8)
-      .setZoom(1 / 8)
-      .setName('mini')
-      .setBounds(map.size.x, map.size.y, map.size.width, map.size.height)
-      .setBackgroundColor(0x81bdd2ff)
-      .ignore(this.background)
-      .ignore(levelText)
-      .ignore(this.controls.buttons.up)
-      .ignore(this.controls.buttons.left)
-      .ignore(this.controls.buttons.right)
-      .ignore(phaserVersion)
-      .setAlpha(0.75)
-    this.miniMap.scrollX = this.player.x
-    this.miniMap.scrollY = this.player.y
+    this.miniMap = new MiniMap(
+      this,
+      10,
+      10,
+      Math.min(map.size.width / 8, (map.size.height / 8) * 2.5),
+      map.size.height / 8,
+      map
+    )
+    this.miniMap.setIgnore([
+      this.background,
+      levelText,
+      this.controls.buttons.up,
+      this.controls.buttons.left,
+      this.controls.buttons.right,
+      phaserVersion
+    ])
+    this.miniMap.update(this.player)
   }
 
   update() {
-    // parallax background
     this.background.parallax(this.player)
-
-    // the the pointers
     this.controls.update()
-
     this.enemiesGroup.update()
-
-    // update miniMap
-    this.miniMap.scrollX = this.player.x
-    this.miniMap.scrollY = this.player.y
-
-    // if player dies
     this.player.update(this.cursors, this.controls)
+    this.miniMap.update(this.player)
   }
 }
