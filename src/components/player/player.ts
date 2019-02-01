@@ -61,9 +61,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   update(cursors: any, controls: Controls) {
     if (this._halt || this._dead) return
 
-    // update spine animation
-    this.playerSpine.move(this)
-
     // check if out of camera and kill
     if (this.body.right < this.mapSize.x || this.body.left > this.mapSize.width || this.body.top > this.mapSize.height)
       this.kill()
@@ -80,5 +77,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     if ((cursors.up.isDown || cursors.space.isDown || controls.upIsDown) && this.body.blocked.down) {
       this.setVelocityY(-1250)
     }
+
+    // update spine animation
+    this.playerSpine.update(this)
   }
 }
