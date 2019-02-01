@@ -9,6 +9,7 @@ import Controls from '../components/controls/controls'
 import LevelText from '../components/levelText'
 import Background from '../components/background'
 import MiniMap from '../components/miniMap'
+import PhaserVersionText from '../components/phaserVersionText'
 
 export default class MainScene extends Phaser.Scene {
   player: Player
@@ -52,6 +53,7 @@ export default class MainScene extends Phaser.Scene {
     const coinGroup = new CoinGroup(this, map.info.filter((el: TilesConfig) => el.type === 'coin'))
     this.controls = new Controls(this)
     const levelText = new LevelText(this, this.level)
+    const phaserVersion = new PhaserVersionText(this, this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`)
 
     this.cameras.main.startFollow(this.player)
 
@@ -74,15 +76,6 @@ export default class MainScene extends Phaser.Scene {
       player.halt()
       goal.nextLevel(this, this.level)
     })
-
-    // display the Phaser.VERSION
-    let phaserVersion = this.add
-      .text(this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`, {
-        color: '#000000',
-        fontSize: 24
-      })
-      .setOrigin(1, 0)
-      .setScrollFactor(0)
 
     this.miniMap = new MiniMap(
       this,
