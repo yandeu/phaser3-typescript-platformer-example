@@ -1,7 +1,6 @@
 import Player from './player'
 
-// @ts-ignore
-export default class spine {
+export default class PlayerSpine {
   spine: any
 
   constructor(
@@ -13,9 +12,9 @@ export default class spine {
     play: boolean = true
   ) {
     // @ts-ignore
-    this.spine = scene.add.spine(650, 300, spine, animation, play)
+    this.spine = scene.add.spine(x, y, spine, animation, play)
     this.spine.customParams = {
-      animation: 'idle',
+      animation,
       isKilling: false
     }
     this.spine.play(this.spine.customParams.animation, true)
@@ -52,20 +51,12 @@ export default class spine {
     // spine animation
     if (player.body.blocked.down) {
       this.spine.customParams.isKilling = false
-
-      if (Math.abs(player.body.velocity.x) >= 10) {
-        this.setAnimation('run', true)
-      } else {
-        this.setAnimation('idle', true)
-      }
+      const animation = Math.abs(player.body.velocity.x) >= 10 ? 'run' : 'idle'
+      this.setAnimation(animation, true)
     }
-
     if (!player.body.blocked.down) {
-      if (this.spine.customParams.isKilling) {
-        this.setAnimation('kill')
-      } else {
-        this.setAnimation('jump')
-      }
+      const animation = this.spine.customParams.isKilling ? 'kill' : 'jump'
+      this.setAnimation(animation)
     }
 
     // spine flip
