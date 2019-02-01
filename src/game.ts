@@ -11,6 +11,7 @@ const DEFAULT_WIDTH = ratio * DEFAULT_HEIGHT //1280
 const config: GameConfig = {
   type: Phaser.WEBGL,
   backgroundColor: '#ffffff',
+  parent: 'phaser-game',
   // @ts-ignore
   scale: {
     // @ts-ignore
@@ -34,5 +35,8 @@ const config: GameConfig = {
 }
 
 window.addEventListener('load', () => {
+  let loadingScreen = document.getElementById('loading-screen')
+  if (loadingScreen) loadingScreen.remove()
+
   new Phaser.Game(config)
 })
