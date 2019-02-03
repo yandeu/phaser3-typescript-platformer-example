@@ -29,6 +29,18 @@ export default class PlayerSpine {
     this.setSkin('blue')
   }
 
+  getAttachments() {
+    return this.spine.skeleton.skin.attachments
+  }
+
+  getSlots() {
+    return this.spine.skeleton.slots
+  }
+
+  setAttachment(slotName: string, attachmentName: string) {
+    this.spine.skeleton.setAttachment(slotName, attachmentName)
+  }
+
   setSkin(newSkin: string) {
     this.spine.setSkin(null)
     this.spine.setSkinByName(newSkin)
