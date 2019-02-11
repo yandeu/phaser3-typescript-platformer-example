@@ -18,7 +18,6 @@ export default class SlimeSprite extends EnemyClass {
     this.body.setVelocityX(-60)
     this.setOrigin(0.5, 1)
     this.setScale(1)
-    // @ts-ignore
     this.body.setSize(this.width - 40, this.height - 20)
     this.body.setOffset(20, 20)
   }

@@ -12,12 +12,9 @@ const config: GameConfig = {
   type: Phaser.WEBGL,
   backgroundColor: '#ffffff',
   parent: 'phaser-game',
-  // @ts-ignore
   scale: {
-    // @ts-ignore
     mode: Phaser.Scale.FIT,
-    // @ts-ignore
-    autoCenter: Phaser.DOM.CENTER_BOTH,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
     width: DEFAULT_WIDTH,
     height: DEFAULT_HEIGHT
   },

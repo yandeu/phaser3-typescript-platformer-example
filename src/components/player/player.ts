@@ -27,7 +27,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     this.setOrigin(0, 1)
     this.setDragX(1500)
-    // @ts-ignore
     this.body.setSize(70, 132)
     this.body.setOffset(25, 24)
 
@@ -53,7 +52,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   halt() {
-    // @ts-ignore
     this.body.enable = false
     this._halt = true
   }

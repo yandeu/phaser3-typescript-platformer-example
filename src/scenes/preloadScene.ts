@@ -1,6 +1,5 @@
 export default class PreloadScene extends Phaser.Scene {
   constructor() {
-    // @ts-ignore
     super({
       key: 'PreloadScene'
     })

@@ -16,7 +16,6 @@ export default class BeeSprite extends EnemyClass {
     //@ts-ignore
     this.body.setVelocityX(-120)
     this.setOrigin(0.5, 1)
-    // @ts-ignore
     this.body.setSize(80, 135)
     this.body.setOffset((this.width - 80) / 2, 30)
   }
@@ -25,7 +24,6 @@ export default class BeeSprite extends EnemyClass {
 
   kill() {
     if (this.dead) return
-    // @ts-ignore
     this.body.setSize(80, 40)
     this.setFrame(2)
     this.removeEnemy()

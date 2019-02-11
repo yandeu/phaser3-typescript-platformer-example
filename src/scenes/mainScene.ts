@@ -22,7 +22,6 @@ export default class MainScene extends Phaser.Scene {
   level: number
   miniMap: MiniMap
   constructor() {
-    // @ts-ignore
     super({
       key: 'MainScene'
     })
