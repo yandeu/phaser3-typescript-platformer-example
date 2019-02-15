@@ -33,6 +33,9 @@ export default class MainScene extends Phaser.Scene {
   }
 
   create() {
+    let loadingScreen = document.getElementById('loading-screen')
+    if (loadingScreen) loadingScreen.remove()
+
     const map = new Map(this.level)
 
     this.cameras.main.setBackgroundColor('#ade6ff')
