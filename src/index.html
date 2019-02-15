@@ -29,7 +29,25 @@
       body {
         height: 100%;
         margin: 0;
-        background-color: darkslateblue;
+      }
+      #phaser-game {
+        position: fixed;
+        top: 0;
+        left: 0;
+      }
+      #loading-screen {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        background-color: teal;
+      }
+      h2 {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #ffffff;
       }
     </style>
 
@@ -38,18 +56,6 @@
     <div id="phaser-game"></div>
 
     <div id="loading-screen">
-      <style>
-        #loading-screen {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100%;
-        }
-        h2 {
-          font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-          color: #ffffff;
-        }
-      </style>
       <h2 id="item">loading...</h2>
     </div>
 
