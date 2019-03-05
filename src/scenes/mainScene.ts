@@ -93,6 +93,18 @@ export default class MainScene extends Phaser.Scene {
       phaserVersion
     ])
     this.miniMap.update(this.player)
+
+    let loadingScreen = document.getElementById('loading-screen')
+    if (loadingScreen) {
+      loadingScreen.classList.add('transparent')
+      this.time.addEvent({
+        delay: 1000,
+        callback: () => {
+          // @ts-ignore
+          loadingScreen.remove()
+        }
+      })
+    }
   }
 
   update() {

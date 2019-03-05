@@ -20,9 +20,6 @@ export default class PreloadScene extends Phaser.Scene {
   }
 
   create() {
-    let loadingScreen = document.getElementById('loading-screen')
-    if (loadingScreen) loadingScreen.remove()
-
     this.scene.start('MainScene')
   }
 }

@@ -24,6 +24,8 @@
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 
     <title>Platformer PWA</title>
+  </head>
+  <body>
     <style>
       html,
       body {
@@ -44,6 +46,11 @@
         align-items: center;
         z-index: 1;
         background-color: teal;
+        user-select: none;
+        transition: opacity 1s ease-in-out;
+      }
+      .transparent {
+        opacity: 0;
       }
       h2 {
         font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -53,11 +60,19 @@
 
     <noscript>Please enable javascript to continue using this application.</noscript>
 
-    <div id="phaser-game"></div>
-
     <div id="loading-screen">
       <h2 id="item">loading...</h2>
     </div>
+
+    <div id="phaser-game"></div>
+
+    <script>
+      // var loadingScreen = document.getElementsByTagName('body')
+      // loadingScreen[0].addEventListener('click', function(event) {
+      //   event.preventDefault()
+      //   console.log('click')
+      // })
+    </script>
 
     <script>
       // Check that service workers are registered
@@ -68,6 +83,5 @@
         })
       }
     </script>
-  </head>
-  <body></body>
+  </body>
 </html>
