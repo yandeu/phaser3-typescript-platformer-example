@@ -52,7 +52,7 @@ export default class MainScene extends Phaser.Scene {
     const coinGroup = new CoinGroup(this, map.info.filter((el: TilesConfig) => el.type === 'coin'))
     this.controls = new Controls(this)
     const levelText = new LevelText(this, this.level)
-    const phaserVersion = new PhaserVersionText(this, this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`)
+    const phaserVersion = new PhaserVersionText(this, 0, 0, `Phaser v${Phaser.VERSION}`)
 
     this.cameras.main.startFollow(this.player)
 
@@ -94,6 +94,7 @@ export default class MainScene extends Phaser.Scene {
     ])
     this.miniMap.update(this.player)
 
+    // remove the loading screen
     let loadingScreen = document.getElementById('loading-screen')
     if (loadingScreen) {
       loadingScreen.classList.add('transparent')
@@ -105,6 +106,23 @@ export default class MainScene extends Phaser.Scene {
         }
       })
     }
+
+    // the resize function
+    const resize = () => {
+      this.controls.adjustPositions()
+      phaserVersion.x = this.cameras.main.width - 15
+      phaserVersion.y = 15
+      this.background.adjustPosition()
+      levelText.adjustPosition()
+    }
+
+    this.scale.on('resize', (gameSize: any) => {
+      this.cameras.main.width = gameSize.width
+      this.cameras.main.height = gameSize.height
+      //this.cameras.resize(gameSize.width, gameSize.height)
+      resize()
+    })
+    resize()
   }
 
   update() {

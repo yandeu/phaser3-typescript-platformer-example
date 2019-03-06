@@ -4,35 +4,91 @@ import PreloadScene from './scenes/preloadScene'
 // @ts-ignore
 import SpineWebGLPlugin from './plugins/SpineWebGLPlugin'
 
-window.addEventListener('load', () => {
-  window.setTimeout(() => {
-    const ratio = Math.max(window.innerWidth / window.innerHeight, window.innerHeight / window.innerWidth)
-    const DEFAULT_HEIGHT = 720
-    const DEFAULT_WIDTH = ratio * DEFAULT_HEIGHT //1280
+type scaleMode = 'FIT' | 'SMOOTH'
 
-    const config: GameConfig = {
-      type: Phaser.WEBGL,
-      backgroundColor: '#ffffff',
-      parent: 'phaser-game',
-      scale: {
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-        width: DEFAULT_WIDTH,
-        height: DEFAULT_HEIGHT
-      },
-      plugins: {
-        scene: [{ key: 'SpineWebGLPlugin', plugin: SpineWebGLPlugin, start: true, sceneKey: 'spine' }]
-      },
-      scene: [PreloadScene, MainScene],
-      physics: {
-        default: 'arcade',
-        arcade: {
-          debug: false,
-          gravity: { y: 2500 }
-        }
+const DEFAULT_WIDTH: number = 1280
+const DEFAULT_HEIGHT: number = 720
+const MAX_WIDTH: number = DEFAULT_WIDTH * 1.5
+const MAX_HEIGHT: number = DEFAULT_HEIGHT * 1.5
+let SCALE_MODE: scaleMode = 'SMOOTH' // FIT OR SMOOTH
+
+window.addEventListener('load', () => {
+  const config: GameConfig = {
+    type: Phaser.WEBGL,
+    backgroundColor: '#ffffff',
+    parent: 'phaser-game',
+    width: DEFAULT_WIDTH,
+    height: DEFAULT_HEIGHT,
+    plugins: {
+      scene: [{ key: 'SpineWebGLPlugin', plugin: SpineWebGLPlugin, start: true, sceneKey: 'spine' }]
+    },
+    scene: [PreloadScene, MainScene],
+    physics: {
+      default: 'arcade',
+      arcade: {
+        debug: false,
+        gravity: { y: 2500 }
       }
     }
+  }
 
-    new Phaser.Game(config)
-  }, 2000)
+  const game = new Phaser.Game(config)
+
+  // the custom resize function
+  const resize = () => {
+    const w = window.innerWidth
+    const h = window.innerHeight
+
+    let width = DEFAULT_WIDTH
+    let height = DEFAULT_HEIGHT
+    let maxWidth = MAX_WIDTH
+    let maxHeight = MAX_HEIGHT
+    let scaleMode = SCALE_MODE
+
+    let maxSmoothScale = 1.15
+
+    let scale = Math.min(w / width, h / height)
+
+    let defaultRatio = DEFAULT_WIDTH / DEFAULT_HEIGHT
+    let maxRatioWidth = MAX_WIDTH / DEFAULT_HEIGHT
+    let maxRatioHeight = DEFAULT_WIDTH / MAX_HEIGHT
+
+    const normalize = (value: number, min: number, max: number) => {
+      let normalized = (value - min) / (max - min)
+      return normalized
+    }
+    let newWidth = Math.min(w / scale, maxWidth)
+    let newHeight = Math.min(h / scale, maxHeight)
+
+    // scaling mode
+    if (width / height < w / h) {
+      let smooth =
+        -normalize(newWidth / newHeight, defaultRatio, maxRatioWidth) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
+
+      if (scaleMode === 'FIT') smooth = 1
+      game.scale.resize(newWidth * smooth, newHeight * smooth)
+    } else {
+      let smooth =
+        -normalize(newWidth / newHeight, defaultRatio, maxRatioHeight) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
+
+      if (scaleMode === 'FIT') smooth = 1
+      game.scale.resize(newWidth * smooth, newHeight * smooth)
+    }
+
+    // scale the width and height of the css
+    game.canvas.style.width = newWidth * scale + 'px'
+    game.canvas.style.height = newHeight * scale + 'px'
+
+    // center the game with css margin
+    game.canvas.style.marginTop = `${(h - newHeight * scale) / 2}px`
+    game.canvas.style.marginLeft = `${(w - newWidth * scale) / 2}px`
+
+    // adjust displaySize
+    game.scale.displaySize.setWidth(newWidth)
+    game.scale.displaySize.setHeight(newHeight)
+  }
+  window.addEventListener('resize', event => {
+    resize()
+  })
+  resize()
 })

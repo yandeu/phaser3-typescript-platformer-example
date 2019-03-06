@@ -1,17 +1,22 @@
 export default class LevelText extends Phaser.GameObjects.Text {
-  constructor(scene: Phaser.Scene, level: number) {
-    super(scene, scene.cameras.main.width / 2, scene.cameras.main.height / 2 - 50, `Level: ${level + 1}`, {
+  constructor(public _scene: Phaser.Scene, level: number) {
+    super(_scene, 0, 0, `Level: ${level + 1}`, {
       color: '#324951',
       fontSize: 56,
       fontWeight: 'bold',
       fontStyle: 'bold'
     })
-    scene.add.existing(this)
+    _scene.add.existing(this)
 
     this.setScrollFactor(0)
       .setOrigin(0.5, 0)
       .setAlpha(0.5)
       .startTween()
+  }
+
+  adjustPosition() {
+    this.x = this._scene.cameras.main.width / 2
+    this.y = this._scene.cameras.main.height / 2 - 50
   }
 
   private tweensAsync = (config: { [key: string]: any }): Promise<{}> => {
