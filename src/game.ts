@@ -45,35 +45,32 @@ window.addEventListener('load', () => {
     let maxHeight = MAX_HEIGHT
     let scaleMode = SCALE_MODE
 
-    let maxSmoothScale = 1.15
-
     let scale = Math.min(w / width, h / height)
+    let newWidth = Math.min(w / scale, maxWidth)
+    let newHeight = Math.min(h / scale, maxHeight)
 
     let defaultRatio = DEFAULT_WIDTH / DEFAULT_HEIGHT
     let maxRatioWidth = MAX_WIDTH / DEFAULT_HEIGHT
     let maxRatioHeight = DEFAULT_WIDTH / MAX_HEIGHT
 
-    const normalize = (value: number, min: number, max: number) => {
-      let normalized = (value - min) / (max - min)
-      return normalized
+    // smooth scaling
+    let smooth = 1
+    let maxSmoothScale = 1.15
+    if (scaleMode === 'SMOOTH') {
+      const normalize = (value: number, min: number, max: number) => {
+        return (value - min) / (max - min)
+      }
+      if (width / height < w / h) {
+        smooth =
+          -normalize(newWidth / newHeight, defaultRatio, maxRatioWidth) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
+      } else {
+        smooth =
+          -normalize(newWidth / newHeight, defaultRatio, maxRatioHeight) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
+      }
     }
-    let newWidth = Math.min(w / scale, maxWidth)
-    let newHeight = Math.min(h / scale, maxHeight)
 
-    // scaling mode
-    if (width / height < w / h) {
-      let smooth =
-        -normalize(newWidth / newHeight, defaultRatio, maxRatioWidth) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
-
-      if (scaleMode === 'FIT') smooth = 1
-      game.scale.resize(newWidth * smooth, newHeight * smooth)
-    } else {
-      let smooth =
-        -normalize(newWidth / newHeight, defaultRatio, maxRatioHeight) / (1 / (maxSmoothScale - 1)) + maxSmoothScale
-
-      if (scaleMode === 'FIT') smooth = 1
-      game.scale.resize(newWidth * smooth, newHeight * smooth)
-    }
+    // resize the game
+    game.scale.resize(newWidth * smooth, newHeight * smooth)
 
     // scale the width and height of the css
     game.canvas.style.width = newWidth * scale + 'px'
@@ -84,8 +81,8 @@ window.addEventListener('load', () => {
     game.canvas.style.marginLeft = `${(w - newWidth * scale) / 2}px`
 
     // adjust displaySize
-    game.scale.displaySize.setWidth(newWidth)
-    game.scale.displaySize.setHeight(newHeight)
+    // game.scale.displaySize.setWidth(newWidth)
+    // game.scale.displaySize.setHeight(newHeight)
   }
   window.addEventListener('resize', event => {
     resize()
