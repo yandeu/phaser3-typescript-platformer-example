@@ -17,8 +17,12 @@ window.addEventListener('load', () => {
     type: Phaser.WEBGL,
     backgroundColor: '#ffffff',
     parent: 'phaser-game',
-    width: DEFAULT_WIDTH,
-    height: DEFAULT_HEIGHT,
+    scale: {
+      // The game will be scaled manually in the resize()
+      mode: Phaser.Scale.NONE,
+      width: DEFAULT_WIDTH,
+      height: DEFAULT_HEIGHT
+    },
     plugins: {
       scene: [{ key: 'SpineWebGLPlugin', plugin: SpineWebGLPlugin, start: true, sceneKey: 'spine' }]
     },
@@ -55,8 +59,8 @@ window.addEventListener('load', () => {
 
     // smooth scaling
     let smooth = 1
-    let maxSmoothScale = 1.15
     if (scaleMode === 'SMOOTH') {
+      const maxSmoothScale = 1.15
       const normalize = (value: number, min: number, max: number) => {
         return (value - min) / (max - min)
       }
@@ -79,10 +83,6 @@ window.addEventListener('load', () => {
     // center the game with css margin
     game.canvas.style.marginTop = `${(h - newHeight * scale) / 2}px`
     game.canvas.style.marginLeft = `${(w - newWidth * scale) / 2}px`
-
-    // adjust displaySize
-    // game.scale.displaySize.setWidth(newWidth)
-    // game.scale.displaySize.setHeight(newHeight)
   }
   window.addEventListener('resize', event => {
     resize()
