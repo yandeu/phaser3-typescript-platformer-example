@@ -1,5 +1,10 @@
 # Phaser 3 TypeScript Platformer Example
 
+[![dependencies Status](https://david-dm.org/yandeu/phaser3-typescript-platformer-example/status.svg?style=flat-square)](https://david-dm.org/yandeu/phaser3-typescript-platformer-example)
+![GitHub](https://img.shields.io/github/license/yandeu/phaser3-typescript-platformer-example.svg?style=flat-square)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/yandeu/phaser3-typescript-platformer-example.svg?style=flat-square)
+![GitHub last commit](https://img.shields.io/github/last-commit/yandeu/phaser3-typescript-platformer-example.svg?style=flat-square)
+
 Built with the [**typescript phaser-project-template**](https://github.com/yandeu/phaser-project-template#readme) starter.
 
 ## Play
