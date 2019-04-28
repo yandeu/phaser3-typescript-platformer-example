@@ -1,6 +1,6 @@
 {
   "name": "phaser3-typescript-platformer-example",
-  "version": "1.0.0",
+  "version": "3.16.2",
   "description": "Phaser 3 TypeScript Platformer Example",
   "main": "index.js",
   "scripts": {
