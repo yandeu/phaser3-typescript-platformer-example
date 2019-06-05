@@ -1,5 +1,3 @@
-import Player from './player/player'
-
 export default class Background extends Phaser.GameObjects.TileSprite {
   constructor(scene: Phaser.Scene) {
     super(scene, 0, 0, 0, 0, 'background')
@@ -9,13 +7,14 @@ export default class Background extends Phaser.GameObjects.TileSprite {
   }
 
   adjustPosition() {
+    const imgHeight = 648
+    this.setScale(this.scene.cameras.main.height / imgHeight)
     this.x = this.scene.cameras.main.centerX
     this.y = this.scene.cameras.main.centerY
     this.width = this.scene.cameras.main.width
-    this.height = this.scene.cameras.main.height
   }
 
-  parallax(player: Player) {
-    this.tilePositionX += player.body.velocity.x / 1200
+  parallax() {
+    this.tilePositionX = this.scene.cameras.main.worldView.x * 0.2
   }
 }
