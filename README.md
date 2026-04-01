@@ -9,9 +9,9 @@ Built with the [**typescript phaser-project-template**](https://github.com/yande
 
 ## Play
 
-[Play the game](https://s3.eu-central-1.amazonaws.com/phaser3-typescript/platformer-example/index.html) (Add it to the homescreen to test the PWA functionality)
+[Play the game](https://yandeu.github.io/phaser3-typescript-platformer-example/) (Add it to the homescreen to test the PWA functionality)
 
-[![phaser3-typescript-platformer](screenshots/nexus6-640x360.png)](https://s3.eu-central-1.amazonaws.com/phaser3-typescript/platformer-example/index.html)
+[![phaser3-typescript-platformer](screenshots/nexus6-640x360.png)](https://yandeu.github.io/phaser3-typescript-platformer-example/)
 
 ## How To Use
 
